@@ -1,6 +1,6 @@
 # samsung-riscv
 <h2>Basic Details</h2>
-<b>Name:</b> Abhay Surya
+<b>Name:</b> Abhay Surya Shankar
 <br>
 <b>College:</b> Dayananda Sagar College Of Engineering
 <br>
