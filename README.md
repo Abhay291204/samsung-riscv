@@ -4,7 +4,7 @@
 <br>
 <b>College:</b> Dayananda Sagar College Of Engineering
 <br>
-<b>Email:</b> <a href="abhaysurya2912@gmail.com">abhaysurya2912@gmail.com</a>
+<b>Email:</b> <a href="mailto:abhaysurya2912@gmail.com">abhaysurya2912@gmail.com</a>
 <br>
 <b>GitHub Profile:</b> <a href="https://github.com/Abhay291204">Abhay291204</a>
 <hr>
