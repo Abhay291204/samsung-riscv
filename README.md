@@ -898,7 +898,7 @@ spike -d pk fibo.o</code></pre>
 	<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; funct3: </b><code>000</code> <br>
 	<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; rd(zero=x0): </b><code>00000</code> <br>
 	<b>&nbsp;&nbsp;&nbsp;&nbsp;&#183; Opcode: </b><code>1100111</code> <br><br>
-<pre><code>101dc:       00008067       ret</code></pre>
+<pre><code>101dc:       00008067     ret</code></pre>
 	   
 <table>
 	<tr>
