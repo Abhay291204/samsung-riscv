@@ -996,7 +996,7 @@ spike -d pk fibo.o</code></pre>
     <details>
   <summary>
       <b>
-        Task:5
+        Task 5:
       </b>
       To implement any digital circuit using VSDSquadron Mini and check whether building and uploading of C program file on RISCV processor works.  
   </summary>
