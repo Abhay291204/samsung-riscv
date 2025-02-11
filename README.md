@@ -1207,60 +1207,46 @@ The clock signal synchronizes the shifting operation.
   Code
 </h3>
 <pre>
-#include <stdio.h>
-#include <debug.h>
-#include <ch32v00x.h>
-#include <math.h>
-
+#include&lt;stdio.h&gt;
+#include&lt;debug.h&gt;
+#include&lt;ch32v00x.h&gt;
+#include&lt;math.h&gt;
 #define N 8  // Define N as a macro
-
 void GPIO_Config(void)
 {
     GPIO_InitTypeDef GPIO_InitStructure = {0}; 
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE);
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
-
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; // Defined as Input Type.
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_Init(GPIOC, &GPIO_InitStructure);
-
-
-
-    
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_Init(GPIOD, &GPIO_InitStructure);
     GPIO_Init(GPIOC, &GPIO_InitStructure);
 }
-
 int main()
 {
     int lsfr[N] = {1, 0, 0, 0, 0, 0, 0, 0};  // Initialize all elements
     int lsfr_1[N];
-
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
     SystemCoreClockUpdate();
     Delay_Init();
     GPIO_Config();
-
     GPIO_WriteBit(GPIOD, GPIO_Pin_3,SET);
-
     while(1)
     {
         if(GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_4)==0){
         uint8_t feedback = lsfr[0] ^lsfr[N-1];
-
         for (int i = 0; i < N; i++) {
             lsfr_1[(i + 1) % N] = lsfr[i];
         }
         lsfr_1[0] = feedback;
-
         for (int i = 0; i < N; i++) {
             lsfr[i] = lsfr_1[i];
         }
-
         GPIO_WriteBit(GPIOC, GPIO_Pin_3, (lsfr[7]) ? SET : RESET);
         GPIO_WriteBit(GPIOC, GPIO_Pin_2, (lsfr[6]) ? SET : RESET);
         GPIO_WriteBit(GPIOC, GPIO_Pin_1, (lsfr[5]) ? SET : RESET);
@@ -1270,8 +1256,7 @@ int main()
         GPIO_WriteBit(GPIOD, GPIO_Pin_2, (lsfr[1]) ? SET : RESET);
         GPIO_WriteBit(GPIOD, GPIO_Pin_3, (lsfr[0]) ? SET : RESET);
         Delay_Ms(500);
-        }
-        
+        }   
     }
 
 }
