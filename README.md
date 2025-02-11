@@ -1096,8 +1096,6 @@ The XOR gate takes inputs from selected flip-flop outputs and feeds the result b
 The clock signal synchronizes the shifting operation.
 </li>
   </ul>
-  <br>
- 
   <h3>
     Working
   </h3>
@@ -1240,11 +1238,11 @@ int main()
     {
         if(GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_4)==0){
         uint8_t feedback = lsfr[0] ^lsfr[N-1];
-        for (int i = 0; i < N; i++) {
-            lsfr_1[(i + 1) % N] = lsfr[i];
+        for (int i = 0; i &lt; N; i++) {
+lsfr_1[(i + 1) % N] = lsfr[i];
         }
-        lsfr_1[0] = feedback;
-        for (int i = 0; i < N; i++) {
+lsfr_1[0] = feedback;
+        for (int i = 0; i &lt; N; i++) {
             lsfr[i] = lsfr_1[i];
         }
         GPIO_WriteBit(GPIOC, GPIO_Pin_3, (lsfr[7]) ? SET : RESET);
