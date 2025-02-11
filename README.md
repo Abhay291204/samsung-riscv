@@ -1070,6 +1070,33 @@ The implementation includes reading and writing binary data through GPIO pins, d
   <br>
   <img src="https://github.com/Abhay291204/samsung-riscv/blob/main/Task%205/Circuit%20diagram.png">
   <br>
+
+  <h3>
+Block Diagram
+  </h3>
+  <img src="">
+  <br>
+  <p>
+This block diagram represents an 8-bit Linear Feedback Shift Register (LFSR) using D flip-flops and XOR gates.  
+  </p>
+  <ul>
+<li>
+The top section shows the LFSR as a shift register with feedback from specific bits XORed together.
+</li>
+
+<li>
+The bottom section is the implementation using 8 D flip-flops (DFF-0 to DFF-7) connected in series, where each flip-flop stores one bit.
+</li>
+
+<li>
+The XOR gate takes inputs from selected flip-flop outputs and feeds the result back to the first flip-flop, generating a pseudo-random sequence.
+</li>
+
+<li>
+The clock signal synchronizes the shifting operation.
+</li>
+  </ul>
+  <br>
  
   <h3>
     Working
