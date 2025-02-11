@@ -991,3 +991,281 @@ spike -d pk fibo.o</code></pre>
     <br><br>
     </details>
     <!--End of Task 4-->
+<hr>
+<!--task 5-->
+    <details>
+  <summary>
+      <b>
+        TASK:5
+      </b>
+      To implement any digital circuit using VSDSquadron Mini and check whether building and uploading of C program file on RISCV processor works.  
+  </summary>
+  <h2>
+    Implement Pseudo Noise Sequence generator using VSDSquadronmini
+  </h2>
+
+  <h3>
+    Overview
+  </h3>
+
+  <p>
+    This project involves the implementation of a Pseudo-Random Number (PN) Sequence Generator using the VSD Squadron Mini, a RISC-V-based SoC development kit. A PN sequence generator is a crucial component in digital communication systems, cryptography, and spread-spectrum applications. This project demonstrates the practical application of digital logic and RISC-V architecture by generating a PN sequence using Linear Feedback Shift Register (LFSR) logic.
+
+The implementation includes reading and writing binary data through GPIO pins, designing the LFSR-based PN sequence generator, simulating the design using the PlatformIO IDE, and displaying the generated PN sequence using LEDs. This project provides a hands-on understanding of digital signal manipulation, randomness in digital systems, and the use of RISC-V for custom hardware acceleration or cryptographic applications.
+  </p>
+
+  <h3>
+   Components Required
+  </h3>
+
+  <ul>
+    <li>
+      VSD Squadron Mini
+    </li>
+    <li>
+      Push buttons for clock
+    </li>
+    <li>
+      8 LEDs for Output
+    </li>
+    <li>
+      Bread Board
+    </li>
+    <li>
+      Jumper wires
+    </li>
+    <li>
+     VS Code for software Development
+    </li>
+    <li>
+    PlatformIO multi framework professional IDE
+    </li>
+  </ul>
+  <h3>
+  Hardware Connections
+  </h3>
+  <ul>
+    <li>
+      <b>
+        Input:
+      </b>
+      <p>
+        One input connected to the GPIO Pins of VSDsquadron Mini via push button mounted on the breadboard.
+      </p>
+    </li>
+    <li>
+      <b>
+        Output:
+      </b>
+      <p>
+       Eight LEDs are connected to display the result of PN Sequence.
+      </p>
+    </li>
+    <li>
+      <p>
+      The GPIO pins are configured according to the reference mannual ensuring the correct flow of signals between the components.
+      </p>
+    </li>
+  </ul>
+  <br>
+  <img src="https://github.com/Abhay291204/samsung-riscv/blob/main/Task%205/Circuit%20diagram.png">
+  <br>
+ 
+  <h3>
+    Working
+  </h3>
+  <p>
+    The most common type of PN sequence generator is based on a Linear Feedback Shift Register (LFSR). Here's how it works:
+  </p>
+
+  <p>
+<b>Shift Register:</b> A shift register is a series of memory cells (flip-flops) that can store binary data. The data in the register is shifted one position to the right with each clock pulse.
+
+  </p>
+
+
+  <p>
+  <b>  Feedback:</b> The output of certain stages (taps) of the shift register are combined using an XOR (exclusive OR) gate. The output of the XOR gate is fed back into the first stage of the shift register.
+  </p>
+
+
+  <p>
+  <b>  Sequence Generation:</b> With each clock pulse, the data in the shift register is shifted, and the XOR feedback is inserted into the first stage. The output of the last stage of the shift register is taken as the output of the PN sequence generator.
+  </p>
+
+  <p>
+    I have used a push button for providing clock pulse ,when the push button in pressed high pulse gets fed to the flip-flops and the 8bit pn sequence is generated.
+  <h3>Truth Table for PN Sequence</h3>
+<table>
+  <!--Row 1-->
+<tr>
+  <th>Clk</th> <th>FF<sub>0</sub></th> <th>FF<sub>1</sub></th> <th>FF<sub>2</sub></th> 
+  <th>FF<sub>3</sub></th> <th>FF<sub>4</sub></th> <th>FF<sub>5</sub></th> <th>FF<sub>6</sub></th> <th>FF<sub>7</sub></th>
+</tr>
+
+  <!--Row 2-->
+<tr>
+  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+</tr>
+
+  <!--Row 3-->
+<tr>
+  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+</tr>
+
+  <!--Row 4-->
+<tr>
+  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+</tr>
+
+  <!--Row 5-->
+<tr>
+  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+</tr>
+
+  <!--Row 6-->
+<tr>
+  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+</tr>
+  <!--Row 7-->
+<tr>
+  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+</tr>
+  <!--Row 8-->
+<tr>
+  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+</tr>
+  <!--Row 9-->
+<tr>
+  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+</tr>
+  <!--Row 10-->
+<tr>
+  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+</tr>
+  <!--Row 11-->
+<tr>
+  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+</tr>
+  <!--Row 12-->
+<tr>
+  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+</tr>
+
+  <!--Row 13-->
+<tr>
+  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+</tr>
+  <!--Row 14-->
+<tr>
+  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+</tr>
+  <!--Row 15-->
+<tr>
+  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+</tr>
+
+  <!--Row 16-->
+<tr>
+  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+</tr>
+
+  <!--Row 17-->
+<tr>
+  <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td>
+</tr>
+</table>
+
+<h3>
+  Code
+</h3>
+<pre>
+#include <stdio.h>
+#include <debug.h>
+#include <ch32v00x.h>
+#include <math.h>
+
+#define N 8  // Define N as a macro
+
+void GPIO_Config(void)
+{
+    GPIO_InitTypeDef GPIO_InitStructure = {0}; 
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE);
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
+
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; // Defined as Input Type.
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOC, &GPIO_InitStructure);
+
+
+
+    
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
+    GPIO_Init(GPIOC, &GPIO_InitStructure);
+}
+
+int main()
+{
+    int lsfr[N] = {1, 0, 0, 0, 0, 0, 0, 0};  // Initialize all elements
+    int lsfr_1[N];
+
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
+    SystemCoreClockUpdate();
+    Delay_Init();
+    GPIO_Config();
+
+    GPIO_WriteBit(GPIOD, GPIO_Pin_3,SET);
+
+    while(1)
+    {
+        if(GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_4)==0){
+        uint8_t feedback = lsfr[0] ^lsfr[N-1];
+
+        for (int i = 0; i < N; i++) {
+            lsfr_1[(i + 1) % N] = lsfr[i];
+        }
+        lsfr_1[0] = feedback;
+
+        for (int i = 0; i < N; i++) {
+            lsfr[i] = lsfr_1[i];
+        }
+
+        GPIO_WriteBit(GPIOC, GPIO_Pin_3, (lsfr[7]) ? SET : RESET);
+        GPIO_WriteBit(GPIOC, GPIO_Pin_2, (lsfr[6]) ? SET : RESET);
+        GPIO_WriteBit(GPIOC, GPIO_Pin_1, (lsfr[5]) ? SET : RESET);
+        GPIO_WriteBit(GPIOC, GPIO_Pin_0, (lsfr[4]) ? SET : RESET);
+        GPIO_WriteBit(GPIOC, GPIO_Pin_6, (lsfr[3]) ? SET : RESET);
+        GPIO_WriteBit(GPIOC, GPIO_Pin_7, (lsfr[2]) ? SET : RESET);
+        GPIO_WriteBit(GPIOD, GPIO_Pin_2, (lsfr[1]) ? SET : RESET);
+        GPIO_WriteBit(GPIOD, GPIO_Pin_3, (lsfr[0]) ? SET : RESET);
+        Delay_Ms(500);
+        }
+        
+    }
+
+}
+</pre>
+
+
+</details>
+
+<hr>
+PN Sequence_Implementation_Video
+<p>
+  Higher Quality Video
+</p>
+<ul>
+  <li>
+<a href="https://youtu.be/PRGi8_yfsbM"
+target="_blank">
+ Youtube Link
+</a>
+</li>
+</ul>
+
+
+
