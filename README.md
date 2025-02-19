@@ -1204,11 +1204,12 @@ The clock signal synchronizes the shifting operation.
 <h3>
   Code
 </h3>
-<pre>
-#include&lt;stdio.h&gt;
-#include&lt;debug.h&gt;
-#include&lt;ch32v00x.h&gt;
-#include&lt;math.h&gt;
+
+```c
+#include<stdio.h>
+#include<debug.h>
+#include<ch32v00x.h>
+#include<math.h>
 #define N 8  // Define N as a macro
 void GPIO_Config(void)
 {
@@ -1238,11 +1239,11 @@ int main()
     {
         if(GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_4)==0){
         uint8_t feedback = lsfr[0] ^lsfr[N-1];
-        for (int i = 0; i &lt; N; i++) {
+        for (int i = 0; i < N; i++) {
 lsfr_1[(i + 1) % N] = lsfr[i];
         }
 lsfr_1[0] = feedback;
-        for (int i = 0; i &lt; N; i++) {
+        for (int i = 0; i < N; i++) {
             lsfr[i] = lsfr_1[i];
         }
         GPIO_WriteBit(GPIOC, GPIO_Pin_3, (lsfr[7]) ? SET : RESET);
@@ -1258,7 +1259,7 @@ lsfr_1[0] = feedback;
     }
 
 }
-</pre>
+```
 
 
 </details>
