@@ -1096,6 +1096,11 @@ The XOR gate takes inputs from selected flip-flop outputs and feeds the result b
 The clock signal synchronizes the shifting operation.
 </li>
   </ul>
+</details>
+<hr>
+<!--task 6-->
+  <details>
+	  <summary><b>Task 6: </b>Implementing the PN Sequence generator.</summary>
   <h3>
     Working
   </h3>
